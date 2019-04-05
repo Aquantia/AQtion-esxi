@@ -9,8 +9,10 @@ ESXi versions supported: 6.7, 6.5
 Binary installation
 --------------------
 
-Download latest VIB binary from release area
-Install as a standalone VIB or integrate into your ESXi image.
+Download latest VIB binary from release area:
+https://github.com/Aquantia/AQtion-esxi/releases
+
+Install as a standalone VIB or integrate offline bundle into your ESXi image.
 
 Source build
 --------------------
