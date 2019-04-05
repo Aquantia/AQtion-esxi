@@ -1,0 +1,19 @@
+*.o
+*.cmd
+*.mk
+*.symvers
+*.order
+*.ko
+atlantic.mod.c
+.tmp_versions
+
+# globals
+GTAGS
+GRTAGS
+GPATH
+CTAGS
+
+# Eclipse
+.project
+.cproject
+.settings

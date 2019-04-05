@@ -1,0 +1,36 @@
+<vib version="5.0">
+<type>bootbank</type>
+<name>net-atlantic</name>
+<version></version>
+<vendor>Aquantia</vendor>
+<summary>Driver for Aquantia AQtion devices</summary>
+<description>Recent driver for Aquantia AQtion devices. Based on original Aquantia drivers</description>
+<release-date></release-date>
+<relationships>
+    <depends>
+	<constraint name="vmkapi_2_3_0_0"/>
+    </depends>
+    <conflicts/>
+    <replaces/>
+    <provides/>
+    <compatibleWith/>
+</relationships>
+<software-tags>
+    <tag>driver</tag>
+    <tag>module</tag>
+</software-tags>
+<system-requires>
+    <maintenance-mode>true</maintenance-mode>
+</system-requires>
+<file-list>
+    <file>etc/vmware/driver.map.d/atlantic.map</file>
+    <file>usr/lib/vmware/vmkmod/atlantic</file>
+</file-list>
+<acceptance-level>community</acceptance-level>
+<live-install-allowed>false</live-install-allowed>
+<live-remove-allowed>false</live-remove-allowed>
+<cimom-restart>false</cimom-restart>
+<stateless-ready>true</stateless-ready>
+<overlay>false</overlay>
+<payloads><payload name="net-atlantic" type="tgz"><checksum checksum-type="sha-256"></checksum></payload></payloads>
+</vib>
