@@ -1,6 +1,6 @@
-AQUANTIA AQtion (atlantic) ESXi vmklinux driver
+AQUANTIA AQtion PCIe (atlantic) ESXi vmklinux driver
 ===========
-This is a latest development preview of aquantia's atlantic VmWare ESXi driver for AQtion family of multigigabit adapters.
+This is a latest development preview of aquantia's atlantic VmWare ESXi driver for AQtion family of PCIe multigigabit adapters.
 Please read technical details in [README-esxi.txt](https://github.com/Aquantia/AQtion-esxi/blob/master/README-ESXi.txt)
 
 Notice this is an **experimental software**. For stable driver version please either visit http://www.aquantia.com or take the driver
