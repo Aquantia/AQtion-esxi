@@ -444,6 +444,14 @@ int aq_ring_rx_clean(struct aq_ring_s *self,
 			memcpy(__skb_put(skb, hdr_len), aq_buf_vaddr(&buff->rxdata),
 			       ALIGN(hdr_len, sizeof(long)));
 
+			/* WA for ESXi: ESXi stack wants to have short packets
+			 * with included padding. LRO engine cuts off it,
+			 * so let's add zeroes at the end to pad to 60byte
+			 */
+			if (unlikely(buff->len < 60))
+				memset(skb_put(skb, 60 - buff->len), 0,
+				       60 - buff->len);
+
 			if (buff->len - hdr_len > 0) {
 				skb_add_rx_frag(skb, 0, buff->rxdata.page,
 						buff->rxdata.pg_off + hdr_len,

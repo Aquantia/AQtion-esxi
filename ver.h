@@ -15,6 +15,6 @@
 #define NIC_BUILD_DRIVER_VERSION           3
 #define NIC_REVISION_DRIVER_VERSION        0
 
-#define AQ_CFG_DRV_VERSION_SUFFIX "-esxi1.4"
+#define AQ_CFG_DRV_VERSION_SUFFIX "-esxi1.5"
 
 #endif /* VER_H */
