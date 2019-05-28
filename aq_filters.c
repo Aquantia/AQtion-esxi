@@ -378,9 +378,11 @@ static void aq_fvlan_rebuild(struct aq_nic_s *aq_nic,
 		if ((!aq_vlans[i].enable)
 		    || (aq_vlans[i].queue == AQ_RX_QUEUE_INVALID)) {
 			do {
-				vlan = find_next_bit(active_vlans,
-						     VLAN_N_VID,
-						     vlan + 1);
+				if (vlan != VLAN_N_VID)
+					vlan = find_next_bit(active_vlans,
+							     VLAN_N_VID,
+							     vlan + 1);
+
 				if (vlan == VLAN_N_VID) {
 					aq_vlans[i].enable = 0U;
 					aq_vlans[i].queue = AQ_RX_QUEUE_INVALID;
@@ -390,10 +392,10 @@ static void aq_fvlan_rebuild(struct aq_nic_s *aq_nic,
 
 				vlan_busy = false;
 				for (j = 0; j < HW_ATL_VLAN_MAX_FILTERS; ++j) {
-					if (aq_vlans[j].enable
-					   && (aq_vlans[j].queue 
-					       != AQ_RX_QUEUE_INVALID)
-					   && (aq_vlans[j].vlan_id == vlan)) {
+					if (aq_vlans[j].enable &&
+					    (aq_vlans[j].queue !=
+					     AQ_RX_QUEUE_INVALID) &&
+					    (aq_vlans[j].vlan_id == vlan)) {
 						vlan_busy = true;
 						break;
 					}

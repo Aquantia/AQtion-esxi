@@ -85,8 +85,8 @@ struct aq_nic_cfg_s {
 	((_TC_) * AQ_CFG_TCS_MAX + (_VEC_))
 
 #ifdef __VMKLNX__
-#define aq_nic_print(aq_nic, level, type, ...) \
-	pr_err(__VA_ARGS__)
+#define aq_nic_print(aq_nic, level, type, fmt, ...)/* \
+	pr_err(fmt"\n", __VA_ARGS__)*/
 #else
 #define aq_nic_print(aq_nic, level, type, args...) \
 	netif_level(level, (aq_nic), type, (aq_nic)->ndev, ##args)

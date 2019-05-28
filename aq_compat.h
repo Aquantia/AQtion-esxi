@@ -172,8 +172,18 @@ static inline int skb_xmit_more(struct sk_buff *skb)
 #define skb_vlan_tag_get(__skb) ((__skb)->vlan_tci & ~VLAN_TAG_PRESENT)
 #endif
 #else /*__VMKLNX__*/
-#define skb_vlan_tag_present(__skb) 0
-#define skb_vlan_tag_get(__skb) 0
+#include <linux/if_vlan.h>
+#define skb_vlan_tag_present(__skb) vlan_tx_tag_present(skb)
+#define skb_vlan_tag_get(__skb) vlan_tx_tag_get(skb)
+
+static void __vlan_hwaccel_put_tag_internal(struct sk_buff *skb, u16 vlan_tci)
+{
+	VLAN_RX_SKB_CB(skb)->magic = VLAN_RX_COOKIE_MAGIC;
+	VLAN_RX_SKB_CB(skb)->vlan_tag = vlan_tci;
+}
+
+#define __vlan_hwaccel_put_tag(skb, vlan_proto, vlan_tci) \
+		__vlan_hwaccel_put_tag_internal(skb, vlan_tci)
 #endif /*__VMKLNX__*/
 
 #ifdef __VMKLNX__

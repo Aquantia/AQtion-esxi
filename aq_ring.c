@@ -498,11 +498,10 @@ int aq_ring_rx_clean(struct aq_ring_s *self,
 				} while (!buff_->is_eop);
 			}
 		}
-#ifndef __VMKLNX__
+
 		if (buff->is_vlan)
 			__vlan_hwaccel_put_tag(skb, htons(ETH_P_8021Q),
 					       buff->vlan_rx_tag);
-#endif
 
 		skb->protocol = eth_type_trans(skb, ndev);
 
